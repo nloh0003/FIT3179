@@ -1,0 +1,115 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 800,
+  "height": 500,
+  "title": "Level of Freedom out of 10",
+  "data": {
+    "url": "https://raw.githubusercontent.com/nloh0003/FIT3179/main/Assignment%202/hfi_cc_2019_Updated1.csv"
+  },
+  "params": [
+    {
+      "name": "Continent_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Eastern Europe",
+          "Middle East & North Africa",
+          "Sub-Saharan Africa",
+          "Latin America & the Caribbean",
+          "Caucasus & Central Asia",
+          "Oceania",
+          "Western Europe",
+          "South Asia",
+          "North America",
+          "East Asia"
+        ],
+        "labels": [
+          "Show All",
+          "Eastern Europe",
+          "Middle East & North Africa",
+          "Sub-Saharan Africa",
+          "Latin America & the Caribbean",
+          "Caucasus & Central Asia",
+          "Oceania",
+          "Western Europe",
+          "South Asia",
+          "North America",
+          "East Asia"
+        ],
+        "name": "Region Selection: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "Continent_selection == null || datum.region == Continent_selection"
+    },
+    {
+      "aggregate": [
+        {"op": "mean", "field": "hf_score", "as": "hf_score"},
+        {"op": "mean", "field": "pf_rol_criminal", "as": "pf_rol_criminal"}
+      ],
+      "groupby": ["countries"]
+    }
+  ],
+  "mark": "circle",
+  "encoding": {
+    "y": {
+      "field": "hf_score",
+      "type": "quantitative",
+      "title": "Human Freedom Index"
+    },
+    "x": {
+      "field": "pf_rol_criminal",
+      "type": "quantitative",
+      "title": "Criminal Justice Score"
+    }
+  },
+  "layer": [
+    {
+      "selection": {
+        "continent_highlight": {
+          "type": "multi",
+          "fields": ["Continent"],
+          "bind": "legend"
+        }
+      },
+      "mark": "circle",
+      "encoding": {
+        "tooltip": [
+          {"field": "countries", "type": "nominal"},
+          {"field": "hf_score", "type": "quantitative"},
+          {"field": "pf_rol_criminal", "type": "quantitative"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -12,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": {"field": "countries", "type": "nominal"},
+        "color": {"value": "black"},
+        "opacity": {
+          "condition": {
+            "test": "datum['countries'] == 'China' || datum['countries'] == 'Singapore' || datum['countries'] == 'Australia' || datum['countries'] == 'New Zealand' || datum['countries'] == 'Italy' || datum['countries'] == 'Yemen' ||  datum['countries'] == 'United States'",
+            "value": 1
+          },
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "countries", "type": "nominal"},
+          {"field": "hf_score", "type": "quantitative"},
+          {"field": "pf_rol_criminal", "type": "quantitative"}
+        ]
+      }
+    }
+  ],
+  "config": {}
+}
