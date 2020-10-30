@@ -28,7 +28,7 @@
           }
         }
       ],
-      "projection": {"type": "equirectangular"},
+      "projection": {"type": "equalEarth"},
       "mark": {"type": "geoshape"},
       "encoding": {
         "color": {"field": "ef_score", "type": "quantitative", "title": "Human Freedom Index"},
