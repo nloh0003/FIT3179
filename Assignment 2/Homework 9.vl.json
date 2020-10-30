@@ -33,8 +33,8 @@
       "encoding": {
         "color": {"field": "ef_score", "type": "quantitative", "title": "Human Freedom Index"},
         "tooltip": [
-          {"field": "properties.NAME", "type": "nominal", "title": "countries"},
-          {"field": "ef_score", "type": "quantitative"}
+          {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+          {"field": "ef_score", "type": "quantitative", "title": "Human Freedom Index"}
         ]
       }
     }
