@@ -31,7 +31,7 @@
       "projection": {"type": "equirectangular"},
       "mark": {"type": "geoshape"},
       "encoding": {
-        "color": {"field": "ef_score", "type": "quantitative"},
+        "color": {"field": "ef_score", "type": "quantitative", "title": "Human Freedom Index"},
         "tooltip": [
           {"field": "properties.NAME", "type": "nominal", "title": "countries"},
           {"field": "ef_score", "type": "quantitative"}
