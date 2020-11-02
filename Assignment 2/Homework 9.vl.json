@@ -31,10 +31,10 @@
       "projection": {"type": "equalEarth"},
       "mark": {"type": "geoshape"},
       "encoding": {
-        "color": {"field": "ef_score", "type": "quantitative", "title": "Human Freedom Index"},
+        "color": {"field": "ef_score", "type": "quantitative", "title": "HFI"},
         "tooltip": [
           {"field": "properties.NAME", "type": "nominal", "title": "Country"},
-          {"field": "ef_score", "type": "quantitative", "title": "Human Freedom Index"}
+          {"field": "ef_score", "type": "quantitative", "title": "HFI"}
         ]
       }
     }
