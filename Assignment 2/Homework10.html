@@ -23,6 +23,9 @@
   
 <h2>This is the third visualisation</h2>
 <div id="scatter_plot"></div>
+
+<h2>This is the fourth visualisation</h2>
+<div id="effect_on_HF"></div>
   
 
 <script type="text/javascript">
@@ -34,19 +37,25 @@
   }).catch(console.error);
   
   
-  var vis2 = "https://nloh0003.github.io/FIT3179/Assignment 2/Viz3_change_in_HF.json";
+  var vis2 = "https://nloh0003.github.io/FIT3179/Assignment 2/Change HF 1.json";
   
   vegaEmbed('#histogram_change_HF', vis2).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);  
   
   
-  var vis3 = "https://nloh0003.github.io/FIT3179/Assignment 2/Interactive Scatterplot 2.json";
+  var vis3 = "https://nloh0003.github.io/FIT3179/Assignment 2/Interactive Scatterplot 3.json";
   
   vegaEmbed('#scatter_plot', vis3).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 
+  
+  var vis4 = "https://nloh0003.github.io/FIT3179/Assignment 2/SPLOM.json";
+  
+  vegaEmbed('#effect_on_HF', vis4).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);  
 
 </script>
   
