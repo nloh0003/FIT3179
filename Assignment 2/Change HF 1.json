@@ -4,7 +4,7 @@
   "data": {
     "url": "https://raw.githubusercontent.com/nloh0003/FIT3179/main/Assignment%202/Change%20in%20HF.csv"
   },
-  "width": 500,
+  "width": 400,
   "height": 300,
   "title": "Change in Human Freedom (2008-2017)",
   "mark": "bar",
@@ -13,7 +13,7 @@
       {"field": "Region", "type": "nominal", "title": "Region"},
       {"field": "Changes (2008-2017)", "type": "quantitative"}
     ],
-    "color": {"field": "Region", "type": "nominal"},
+    "color": {"field": "Region", "type": "nominal", "legend":{"orient": "bottom"}},
     "y": {
       "field": "Region",
       "type": "nominal",
