@@ -1,0 +1,97 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 800,
+  "height": 500,
+  "title": "Level of Freedom out of 10",
+  "data": {
+    "url": "https://raw.githubusercontent.com/nloh0003/FIT3179/main/Assignment%202/HF%20Data%20set%204%20Aggregated.csv"
+  },
+  "params": [
+    {
+      "name": "Population_Above",
+      "value": 0,
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 100000000,
+        "step": 1000000,
+        "name": "Minimum Population: "
+      }
+    }
+  ],
+  "transform": [{"filter": "datum.Population > Population_Above"}],
+  "encoding": {
+    "y": {
+      "field": "hf_score",
+      "type": "quantitative",
+      "title": "Human Freedom Index",
+      "scale": {"domain": [4, 9]}
+    },
+    "x": {
+      "field": "GDP_2017",
+      "type": "quantitative",
+      "title": "GDP per capita ($USD)"
+    }
+  },
+  "layer": [
+    {
+      "selection": {
+        "continent_highlight": {
+          "type": "multi",
+          "fields": ["region"],
+          "bind": "legend"
+        }
+      },
+      "mark": "circle",
+      "encoding": {
+        "size": {
+          "field": "Population",
+          "type": "quantitative",
+          "scale": {
+            "type": "threshold",
+            "domain": [1000000, 10000000, 50000000, 100000000, 500000000],
+            "range": [10, 50, 150, 200, 300, 400]
+          },
+          "legend": {"format": ".1s"}
+        },
+        "color": {"field": "region", "type": "nominal"},
+        "opacity": {
+          "condition": {"selection": "continent_highlight", "value": 0.75},
+          "value": 0.2
+        },
+        "tooltip": [
+          {"field": "countries", "type": "nominal"},
+          {"field": "hf_score", "type": "quantitative"},
+          {"field": "GDP_2017", "type": "quantitative"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -12,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": {"field": "countries", "type": "nominal"},
+        "color": {"value": "black"},
+        "opacity": {
+          "condition": {
+            "test": "datum['countries'] == 'China' || datum['countries'] == 'Sudan' || datum['countries'] == 'Australia' || datum['countries'] == 'New Zealand' || datum['countries'] == 'Luxembourg' || datum['countries'] == 'Yemen' ||  datum['countries'] == 'United States of America'",
+            "value": 1
+          },
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "countries", "type": "nominal"},
+          {"field": "hf_score", "type": "quantitative"},
+          {"field": "GDP_2017", "type": "quantitative"}
+        ]
+      }
+    }
+  ],
+  "config": {}
+}

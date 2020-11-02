@@ -1,0 +1,33 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": {"text": "What Affects Human Freedom?"},
+  "data": {
+    "url": "https://raw.githubusercontent.com/nloh0003/FIT3179/main/Assignment%202/SPLOM%201.csv"
+  },
+  "columns": 2,
+  "repeat": [
+    "Personal Freedom",
+    "Economic Freedom",
+    "Criminal Justice",
+    "Religious Freedom"
+  ],
+  "spec": {
+    "mark": {"type": "point", "size": 100},
+    "encoding": {
+      "y": {
+        "field": "hf_score",
+        "type": "quantitative",
+        "scale": {"domain": [3, 10]},
+        "title": "Human Freedom Index"
+      },
+      "x": {
+        "field": {"repeat": "repeat"},
+        "type": "quantitative",
+        "scale": {"domain": [3, 10]}
+      },
+      "color": {"field": "Region"},
+      "opacity": {"value": 0.8}
+    }
+  },
+  "config": {}
+}
