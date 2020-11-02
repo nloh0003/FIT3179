@@ -25,7 +25,7 @@
         "type": "quantitative",
         "scale": {"domain": [3, 10]}
       },
-      "color": {"field": "Region", "legend": {"orient": "bottom"}},
+      "color": {"field": "Region"},
       "opacity": {"value": 0.8}
     }
   },
