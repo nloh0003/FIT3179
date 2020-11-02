@@ -13,7 +13,7 @@
       {"field": "Region", "type": "nominal", "title": "Region"},
       {"field": "Changes (2008-2017)", "type": "quantitative"}
     ],
-    "color": {"field": "Region", "type": "nominal", "legend":{"orient": "bottom"}},
+    "color": {"field": "Region", "type": "nominal", "legend":null},
     "y": {
       "field": "Region",
       "type": "nominal",
